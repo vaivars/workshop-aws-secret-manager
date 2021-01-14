@@ -33,11 +33,12 @@ You should get the contents of the secret in your CLI.
 
 `ansible-galaxy collection install amazon.aws`
 
-`ansible-playbook ansible/echo.yml -e "awssecretname=REPLACEME"`
+`ansible-playbook ansible/echo.yml -e "awssecretname=TestSecret"`
 
 If everything went correctly, you should have the contents of the secret in the execution output.
+Now for cleanup - 
 
-Now in real-world usage, we should evade outputting the contents of secrets in a terminal, but for our purpose - its fine, since its not going to be used.
+`aws secretsmanager delete-secret --secret-id TestSecret --force-delete-without-recovery`
 
 ## Using terraform to set secrets
 We can use terraform to set the secrets, in practice - this is something that wouldn't be used on its own, but rather in conjunction with other modules.

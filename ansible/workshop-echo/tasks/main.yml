@@ -1,0 +1,4 @@
+---
+
+- name: Echo test variable
+  debug: msg="{{ lookup('aws_secret', '{{ awssecretname }}') }}"
